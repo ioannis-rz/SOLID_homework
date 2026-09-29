@@ -157,7 +157,7 @@ public class Main
 Como corrección se propone independizar cada método de envío. Para ello se crea una interfaz de calculadora general a partir de la cuál se implementan las calculadoras específicas de cada tipo de envío. Con esto, cada clase es independiente y es relativamente fácil añadir una nueva versión de la calculadora, basta con crear una nueva clase. Así, cualquier añadido no modifica ni la interfaz padre ni sus clases hermanas. Considero que con estas  modificaciones se cumple el principio de Open/Closed.
 
 ### Capturas
-![Captura del código modificado ejecutándose en OnlineGDB](O/Screenshot_20260929_104330.png)
+![Captura del código modificado ejecutándose en OnlineGDB]("Open-Closed Principle/Screenshot_20260929_104330.png")
 
 ## Ejercicio L - Liskov Substitution Principle
 ### Código Original
