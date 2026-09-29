@@ -157,7 +157,7 @@ public class Main
 Como corrección se propone independizar cada método de envío. Para ello se crea una interfaz de calculadora general a partir de la cuál se implementan las calculadoras específicas de cada tipo de envío. Con esto, cada clase es independiente y es relativamente fácil añadir una nueva versión de la calculadora, basta con crear una nueva clase. Así, cualquier añadido no modifica ni la interfaz padre ni sus clases hermanas. Considero que con estas  modificaciones se cumple el principio de Open/Closed.
 
 ### Capturas
-![Captura del código modificado ejecutándose en OnlineGDB]('Open-Closed Principle/Screenshot_20260929_104330.png')
+![Captura del código modificado ejecutándose en OnlineGDB](Open-Closed%20Principle/Screenshot_20260929_104330.png)
 
 ## Ejercicio L - Liskov Substitution Principle
 ### Código Original
@@ -241,9 +241,9 @@ Con esto se soluciona el problema de la sustitución de Liskov, pues ahora los a
 En temas concretos del código, se modifica Editor para que solo acepte una lista de archivos con interfaz `Escribible`, tal que pueda ejecutar la operación de escritura. En las capturas a continuación se muestra el error al intentar añadir a la lista un `ArchivoSoloLectura`. Después se muestra como, al comentar esa inserción, el código funciona de forma esperada.
 
 ### Capturas
-![Captura del código modificado mostrando error al intentar añadir un archivo no escribible](L/Screenshot_20260929_110853.png)
+![Captura del código modificado mostrando error al intentar añadir un archivo no escribible](Liskov%20Substitution%20Principle/Screenshot_20260929_110853.png)
 
-![Captura del código modificado ejecutándose](L/Screenshot_20260929_111012.png)
+![Captura del código modificado ejecutándose](Liskov%20Substitution%20Principle/Screenshot_20260929_111012.png)
 
 ## Ejercicio I - Interface Segregation Principle
 ### Código Original
@@ -329,11 +329,11 @@ Para corregirlo, se crearon interfaces para cada una de estas acciones (imprimir
 Así, es más fácil definir dispositivos que cumplan con sólo algunas características, y en caso de que se intente hacer alguna operación no definida con ellos, sí se reporta un error  (en vez de fallar sin avisar). Este último comportamiento se muestra a continuación.
 
 ### Capturas
-![Captura del código original sin mostrar error al intentar operaciones no definidas sobre una `ImpresoraBasica`](I/image.png)
+![Captura del código original sin mostrar error al intentar operaciones no definidas sobre una `ImpresoraBasica`](Interface%20Segregation%20Principle/image.png)
 
-![Captura del código modificado mostrando error al intentar operaciones no definidas sobre una `ImpresoraBasica`](I/Screenshot_20260929_112958.png)
+![Captura del código modificado mostrando error al intentar operaciones no definidas sobre una `ImpresoraBasica`](Interface%20Segregation%20Principle/Screenshot_20260929_112958.png)
 
-![Captura del código modificado ejecutándose](I/Screenshot_20260929_113018.png)
+![Captura del código modificado ejecutándose](Interface%20Segregation%20Principle/Screenshot_20260929_113018.png)
 
 ## Ejercicio D - Dependency Inversion Principle
 ### Código Original
@@ -440,6 +440,6 @@ Para cada ambas soluciones la idea es la misma, hacer que la clase `ServicioUsua
 
 ### Capturas
 
-![Captura del código modificado con inyección de métodos](D/Screenshot_20260929_144021.png)
+![Captura del código modificado con inyección de métodos](Dependency%20inversion%20Principle%20/Screenshot_20260929_144021.png)
 
-![Captura del código modificado con inyección de constructor](D/Screenshot_20260929_144211.png)
+![Captura del código modificado con inyección de constructor](Dependency%20inversion%20Principle%20/Screenshot_20260929_144211.png)
