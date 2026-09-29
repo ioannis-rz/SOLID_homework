@@ -100,7 +100,7 @@ Si por ejemplo, fuera necesario cambiar el formato del boletín, basta con modif
 
 ### Capturas
 
-![Captura del código modificado ejecutándose en OnlineGDB](S/Screenshot_20260929_101213.png)
+![Captura del código modificado ejecutándose en OnlineGDB](Single-Responsibility/Screenshot_20260929_101213.png)
 
 ## Ejercicio O - Open/Closed Principle
 ### Código Original
