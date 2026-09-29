@@ -14,6 +14,10 @@ class ImpresoraBasica implements Imprime {
 	public void imprimir(String d) { System.out.println("Imprimiendo " + d); }
 }
 
+class Escaner implements Escanea {
+    public void  escanear(String d) { System.out.println("Escaneando " + d); }
+}
+
 public class Main
 {
 	public static void main(String[] args) {
@@ -21,9 +25,9 @@ public class Main
         ImpresoraBasica basic1 = new ImpresoraBasica();
         System.out.println("IMPRESORA BÁSICA");
         basic1.imprimir("Hola");
-        // basic1.escanear("Hola");
-        // basic1.enviarFax("Hola");
-        // basic1.fotocopiar("Hola");
+        //basic1.escanear("Hola");
+        //basic1.enviarFax("Hola");
+        //basic1.fotocopiar("Hola");
         
         ImpresoraMultifuncional multi1 = new ImpresoraMultifuncional();
         System.out.println("\nIMPRESORA MULTIFUNCIONAL");
@@ -32,5 +36,8 @@ public class Main
         multi1.enviarFax("Hola");
         multi1.fotocopiar("Hola");
     
+        Escaner esc = new Escaner();
+        System.out.println("\nESCANER");
+        esc.escanear("Hola");
 	}
 }
