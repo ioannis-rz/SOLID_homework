@@ -10,11 +10,9 @@ interface Escribible {
 }
 
 class ArchivoSoloLectura extends Archivo {}
-
 class ArchivoEscrituraLectura extends Archivo implements Escribible {
     public void escribir(String texto) { contenido += texto; }
 }
-
 class Editor {
     public void agregarFirma(java.util.List<Escribible> archivos) {
     	for (Escribible a : archivos) {
@@ -40,6 +38,5 @@ public class Main
     editor.agregarFirma(list);
     
     System.out.println(arc.leer());
-    
 	}
 }
