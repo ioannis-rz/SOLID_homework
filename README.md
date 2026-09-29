@@ -440,6 +440,6 @@ Para cada ambas soluciones la idea es la misma, hacer que la clase `ServicioUsua
 
 ### Capturas
 
-![Captura del código modificado con inyección de métodos](Dependency%20inversion%20Principle%20/Screenshot_20260929_144021.png)
+![Captura del código modificado con inyección de métodos](Dependency%20inversion%20Principle/Screenshot_20260929_144021.png)
 
 ![Captura del código modificado con inyección de constructor](Dependency%20inversion%20Principle%20/Screenshot_20260929_144211.png)
