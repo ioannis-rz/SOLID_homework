@@ -1,4 +1,4 @@
-# Taller SOLID
+ # Taller SOLID
 
 ## Ejercicio S - Single Responsibility
 ### Código Original
@@ -335,8 +335,8 @@ Así, es más fácil definir dispositivos que cumplan con sólo algunas caracter
 
 ![Captura del código modificado ejecutándose](I/Screenshot_20260929_113018.png)
 
-# Ejercicio D - Dependency Inversion Principle
-
+## Ejercicio D - Dependency Inversion Principle
+### Código Original
 ```Java
 public class MySQLDatabase {
 	public void guardar(String dato) {
@@ -355,14 +355,91 @@ public class ServicioUsuarios {
 	 }
 }
 ```
-
-
+El código presenta una violación del principio de inversión de dependencias porque hace que el módulo `ServicioUsuarios` (que es un módulo de lógica de negocio) dependa de las llamadas a bajo nivel a la base de datos, no hay ninguna abstracción. Esto dificulta, por un lado, hacer testing de la clase `ServicioUsuarios` in tenre un base de datos conectada, por otro lado, la llamada a la base de datos dependen exclusivamente de `ServicioUsuarios`, lo que implica que, al cambiar de base de datos, sea necesario modificar la clase. 
 
 ## Corrección del código
+#### Primera opción
 ```Java
-/// idk
+interface Database { public void guardar(String dato);}
+
+class MySQLDatabase implements Database {
+	public void guardar(String dato) {
+		System.out.println("[MySQL] Guardando: " + dato);
+	}
+}
+class MongoDBDatabase implements Database {
+    public void guardar(String dato) {
+		System.out.println("[MongoDB] Guardando: " + dato);
+    }
+}
+class ServicioUsuarios {
+    private final Database db;
+    
+    public ServicioUsuarios(Database db) {
+        this.db = db;
+    }
+    
+    public void registrar(String nombreUsuario) {
+		if (nombreUsuario == null || nombreUsuario.isBlank()) {
+			throw new IllegalArgumentException("Nombre inválido");
+		}
+		db.guardar(nombreUsuario);
+	}  
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Database control = new MySQLDatabase();
+        ServicioUsuarios serv = new ServicioUsuarios(control);
+        serv.registrar("Juan");
+        
+        control = new MongoDBDatabase();
+        serv = new ServicioUsuarios(control);
+        serv.registrar("Luis");
+	}
+}
 ```
-#### Justificacion de correcion
-adsasd
-#### Capturas
-adads
+#### Segunda opción 
+```Java
+interface Database { public void guardar(String dato);}
+
+class MySQLDatabase implements Database {
+	public void guardar(String dato) {
+		System.out.println("[MySQL] Guardando: " + dato);
+	}
+}
+class MongoDBDatabase implements Database {
+    public void guardar(String dato) {
+		System.out.println("[MongoDB] Guardando: " + dato);
+    }
+}
+class ServicioUsuarios {
+    public void registrar(String nombreUsuario, Database db) {
+		if (nombreUsuario == null || nombreUsuario.isBlank()) {
+			throw new IllegalArgumentException("Nombre inválido");
+		}
+		db.guardar(nombreUsuario);
+	}  
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Database control = new MySQLDatabase();
+        ServicioUsuarios serv = new ServicioUsuarios();
+        serv.registrar("Juan", control);
+        
+        control = new MongoDBDatabase();
+        serv.registrar("Luis", control);
+	}
+}
+```
+### Justificación de corrección
+Para cada ambas soluciones la idea es la misma, hacer que la clase `ServicioUsuarios` no dependa de la llamada a una base de datos particular, sino que se emplee una interfaz que permite usar cualquier base de datos de forma intercambiable. Para esto se usa el patrón de inyección de dependencias. En el primer caso, es necesario para la creación del objeto `ServicioUsuarios` una base de datos (inyección en constructor). Para el segundo caso es necesario unicamente para el método `registrar()` (inyección de métodos). En ambos casos se consigue lo esperado, que la clase `ServicioUsuarios` no tenga que lidiar con la creación ni el manejo de la base de datos, sino que interactúe con esta a través de una abstracción.
+
+### Capturas
+
+![Captura del código modificado con inyección de métodos](D/Screenshot_20260929_144021.png)
+
+![Captura del código modificado con inyección de constructor](D/Screenshot_20260929_144211.png)
